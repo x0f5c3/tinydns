@@ -1,0 +1,12 @@
+<component name="CopyrightManager">
+  <settings>
+    <LanguageOptions name="Go">
+      <option name="fileTypeOverride" value="3" />
+      <option name="block" value="false" />
+    </LanguageOptions>
+    <LanguageOptions name="Rust">
+      <option name="fileTypeOverride" value="3" />
+      <option name="block" value="false" />
+    </LanguageOptions>
+  </settings>
+</component>
