@@ -1,4 +1,5 @@
 /*
+Package cmd
 Copyright © 2023 x0f5c3 <x0f5c3@tutanota.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,6 +25,7 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -76,13 +78,14 @@ func initConfig() {
 		viper.SetConfigFile(cfgFile)
 	} else {
 		// Find home directory.
-		home, err := os.UserHomeDir()
+		home, err := os.UserConfigDir()
 		cobra.CheckErr(err)
 
 		// Search config in home directory with name ".tinydns" (without extension).
 		viper.AddConfigPath(home)
-		viper.SetConfigType("yaml")
-		viper.SetConfigName(".tinydns")
+		viper.AddConfigPath(filepath.Join(home, "tinydns"))
+		viper.SetConfigType("toml")
+		viper.SetConfigName("tinydns")
 	}
 
 	viper.AutomaticEnv() // read in environment variables that match
